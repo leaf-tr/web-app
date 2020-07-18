@@ -1,2 +1,22 @@
 # web-app
 A repo that will keep submodules of front-end and back-end in one container
+
+### Contributing
+If you want to test both front-end and back-end as the whole system use this repo, otherwise use each respective submodule
+
+to clone you need to need to add a recursive flag so folders within submodules will be cloned as well
+
+`git clone --recurse-submodules https://github.com/leaf-tr/web-app`
+
+To work on the project, you can `cd` into each submodule and create a new branch
+```
+cd front-end
+git checkout -b "new-branch-name"
+```
+Work on some stuff and when ready to commit run typical commands:
+```
+git add .
+git commit -m "Added new features"
+git push
+```
+Create a pull request (PR) on the respective branch
