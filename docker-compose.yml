@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  frontend:
+    stdin_open: true
+    container_name: react-app
+    build:
+      context: ./front-end/
+      dockerfile: Dockerfile
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./front-end/:/app
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=development
+    command: "npm start"
+  
+  backend:
+    restart: always
+    container_name: flask-api-app
+    build:
+      context: ./back-end/
+      dockerfile: Dockerfile
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    volumes:
+      - ./back-end/:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=main.py
+      - FLASK_DEBUG=1
